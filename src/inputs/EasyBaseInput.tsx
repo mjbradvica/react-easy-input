@@ -7,21 +7,16 @@ export const EasyBaseInput: React.FC<EasyBaseInputProperties> = ({
   type,
 }: EasyBaseInputProperties) => {
   const calculateValue = (): string => {
-    switch (type) {
-      case "date": {
-        return (input.value as Date).toISOString().slice(0, 10);
-      }
-      case "text":
-      case "number":
-      default: {
-        return input.value.toString();
-      }
+    if (type === "date") {
+      return (input.value as Date).toISOString().slice(0, 10);
     }
+    return input.value.toString();
   };
 
   return (
     <input
       id={input.id}
+      onFocus={input.handleFocus}
       onInput={input.handleInput}
       placeholder={placeholder}
       type={type}
