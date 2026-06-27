@@ -4,7 +4,7 @@ import { useState } from "react";
 import type { BaseInputType } from "../types/base-input-type";
 
 export default function usePasswordInput(initialValue = ""): IUsePasswordInput {
-  const [inputType, setInputType] = useState<BaseInputType>("text");
+  const [inputType, setInputType] = useState<BaseInputType>("password");
 
   const toggleInputType = (): void => {
     if (input.inputType === "password") {
