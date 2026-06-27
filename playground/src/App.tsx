@@ -1,12 +1,27 @@
-import { EasyBaseInput, useDateInput, useTextInput } from "../../src/index";
+import {
+  EasyBaseInput,
+  EasyValidationMessage,
+  useDateInput,
+  useEmailInput,
+  usePasswordInput,
+} from "../../src/index";
 
 export const App: React.FC = () => {
-  const name = useTextInput();
   const date = useDateInput();
+  const email = useEmailInput();
+  const password = usePasswordInput();
 
   return (
     <>
-      <EasyBaseInput input={date} placeholder="first name" type="date" />
+      <EasyBaseInput input={date} placeholder="first name" />
+      <div>
+        <EasyBaseInput input={password} />
+        <button onClick={password.toggleInputType}>Toggle</button>
+      </div>
+      <div>
+        <EasyBaseInput input={email} />
+        <EasyValidationMessage input={email} />
+      </div>
     </>
   );
 };

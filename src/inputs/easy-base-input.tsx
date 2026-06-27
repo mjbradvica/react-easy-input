@@ -1,13 +1,13 @@
 import type IUseInput from "../interfaces/i-use-input";
-import type { BaseInputType } from "../types/base-input-type";
 
 export const EasyBaseInput: React.FC<EasyBaseInputProperties> = ({
   input,
+  name,
   placeholder,
-  type,
+  required,
 }: EasyBaseInputProperties) => {
   const calculateValue = (): string => {
-    if (type === "date") {
+    if (input.inputType === "date") {
       return (input.value as Date).toISOString().slice(0, 10);
     }
     return input.value.toString();
@@ -18,8 +18,10 @@ export const EasyBaseInput: React.FC<EasyBaseInputProperties> = ({
       id={input.id}
       onFocus={input.handleFocus}
       onInput={input.handleInput}
+      name={name}
       placeholder={placeholder}
-      type={type}
+      required={required}
+      type={input.inputType}
       value={calculateValue()}
     />
   );
@@ -27,6 +29,7 @@ export const EasyBaseInput: React.FC<EasyBaseInputProperties> = ({
 
 interface EasyBaseInputProperties {
   input: IUseInput<string | number | Date>;
+  name?: string;
   placeholder?: string;
-  type: BaseInputType;
+  required?: boolean;
 }

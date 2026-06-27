@@ -4,5 +4,9 @@ import useInput from "./use-input";
 export default function useDateInput(
   initialValue = new Date(),
 ): IUseInput<Date> {
-  return useInput<Date>(initialValue, (element) => new Date(element.value));
+  return useInput<Date>(
+    initialValue,
+    "date",
+    (element) => new Date(element.value),
+  );
 }
