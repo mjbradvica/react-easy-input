@@ -4,14 +4,13 @@ import type { BaseInputType } from "../types/base-input-type";
 
 export default function useInput<T>(
   initialValue: T,
-  defaultInputType: BaseInputType,
+  inputType: BaseInputType,
   conversionFunction: (element: HTMLInputElement) => T,
 ): IUseInput<T> {
   const id = crypto.randomUUID();
   const [isDirty, setDirty] = useState<boolean>(false);
   const [isValid, setValid] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
-  const [inputType, setInputType] = useState<BaseInputType>(defaultInputType);
   const [value, setValue] = useState<T>(initialValue);
 
   const handleInput = (event: React.InputEvent<HTMLInputElement>): void => {
@@ -40,7 +39,6 @@ export default function useInput<T>(
     isDirty,
     isValid,
     message,
-    setInputType,
     value,
   };
 }
