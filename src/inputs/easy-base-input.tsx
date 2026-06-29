@@ -1,10 +1,14 @@
+import { validationStyling } from "../helpers/styling-helpers";
 import type IUseInput from "../interfaces/i-use-input";
 
 export const EasyBaseInput: React.FC<EasyBaseInputProperties> = ({
   input,
+  invalidClass = "",
   name,
   placeholder,
   required,
+  staticClass = "",
+  validClass = "",
 }: EasyBaseInputProperties) => {
   const calculateValue = (): string => {
     if (input.inputType === "date") {
@@ -15,6 +19,7 @@ export const EasyBaseInput: React.FC<EasyBaseInputProperties> = ({
 
   return (
     <input
+      className={`${staticClass} ${validationStyling(input, validClass, invalidClass)}`}
       id={input.id}
       onFocus={input.handleFocus}
       onInput={input.handleInput}
@@ -29,7 +34,10 @@ export const EasyBaseInput: React.FC<EasyBaseInputProperties> = ({
 
 interface EasyBaseInputProperties {
   input: IUseInput<string | number | Date>;
+  invalidClass?: string;
   name?: string;
   placeholder?: string;
   required?: boolean;
+  staticClass?: string;
+  validClass?: string;
 }
