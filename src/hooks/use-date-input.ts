@@ -7,6 +7,6 @@ export default function useDateInput(
   return useInput<Date>(
     initialValue,
     "date",
-    (element) => new Date(element.value),
+    (element) => new Date(element.value.replace(/-/, "/").replace(/-/, "/")),
   );
 }

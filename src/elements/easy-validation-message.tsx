@@ -9,11 +9,20 @@ export const EasyValidationMessage: React.FC<
   staticClass = "",
   validClass = "",
 }: EasyValidationMessageProperties) => {
+  const displayMessage = (): string => {
+    return input.isValid ? "valid" : input.message;
+  };
+
+  const isVisible = (): "hidden" | "visible" => {
+    return input.isValid ? "hidden" : "visible";
+  };
+
   return (
     <p
       className={`${validationStyling(input, validClass, invalidClass)} ${staticClass}`}
+      style={{ visibility: isVisible() }}
     >
-      {input.message}
+      {displayMessage()}
     </p>
   );
 };
