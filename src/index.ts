@@ -11,7 +11,6 @@ export { EasyBaseInput } from "./inputs/easy-base-input";
 
 // Interfaces
 export type { default as IUseInput } from "./interfaces/i-use-input";
-export type { default as IDirty } from "./interfaces/i-dirty";
 export type { default as IValid } from "./interfaces/i-valid";
 export type { default as IUsePasswordInput } from "./interfaces/i-use-password-input";
 
