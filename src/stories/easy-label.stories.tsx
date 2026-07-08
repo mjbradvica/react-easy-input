@@ -16,7 +16,12 @@ export const Primary: StoryObj<typeof meta> = {
 
     return (
       <div className="mb-3">
-        <EasyLabel input={input} content="My Label:" staticClass="form-label" />
+        <EasyLabel
+          input={input}
+          content="My Label:"
+          staticClass="form-label"
+          invalidClass="text-danger"
+        />
         <div className="input-group">
           <EasyBaseInput
             input={input}
